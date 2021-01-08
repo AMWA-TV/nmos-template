@@ -37,3 +37,9 @@ jobs:
         run: rm -rf source-repo/
       - name: Make site
         run: make site
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Can we see _site
+        run: ls
