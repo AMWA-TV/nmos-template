@@ -37,15 +37,6 @@ jobs:
         run: rm -rf source-repo/
       - name: Make site
         run: make site
-      - name: Remove old site from server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            date > timestamp.txt
-            rm -rf _site
       - name: Upload site to server
         uses: appleboy/scp-action@master
         with:
@@ -53,4 +44,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "_site"
-          target: "_site"
+          target: "var/www/${{ secrets.SSH_HOST }}/nmos-template"
+          strip_components: 1
