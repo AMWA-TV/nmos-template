@@ -53,7 +53,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            mv "var/www/${{ secrets.SSH_HOST }}/nmos-template{,.old}"
-            mv "var/www/${{ secrets.SSH_HOST }}/nmos-template{.new,}"
-            rm -rf "var/www/${{ secrets.SSH_HOST }}/nmos-template.old"
+            cd "var/www/${{ secrets.SSH_HOST }}/"
+            mv "nmos-template nmos-template.old"
+            mv "nmos-template.new nmos-template"
+            rm -rf "nmos-template.old"
 
