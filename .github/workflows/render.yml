@@ -44,5 +44,16 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "_site"
-          target: "var/www/${{ secrets.SSH_HOST }}/nmos-template"
+          target: "var/www/${{ secrets.SSH_HOST }}/nmos-template.new"
           strip_components: 1
+      - name: Replace old site
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            mv "var/www/${{ secrets.SSH_HOST }}/nmos-template{,.old}"
+            mv "var/www/${{ secrets.SSH_HOST }}/nmos-template{.new,}"
+            rm -rf "var/www/${{ secrets.SSH_HOST }}/nmos-template.old"
+
