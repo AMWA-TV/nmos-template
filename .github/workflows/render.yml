@@ -37,24 +37,9 @@ jobs:
         run: rm -rf source-repo/
       - name: Make site
         run: make site
-      - name: Upload site to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "_site"
-          target: "var/www/${{ secrets.SSH_HOST }}/nmos-template.new"
-          strip_components: 1
-      - name: Replace old site
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd "var/www/${{ secrets.SSH_HOST }}/"
-            mv "nmos-template nmos-template.old"
-            mv "nmos-template.new nmos-template"
-            rm -rf "nmos-template.old"
-
+      - name: Env Test
+        run: make upload
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }} 
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
