@@ -30,14 +30,17 @@ jobs:
       - name: Install Bundler
         run: gem install bundler
       - name: Setup 
-        run: make distclean build-tools
+        run: |
+            make distclean 
+            make build-tools
+            cat .scripts/scripts.mk
       - name: Build
         run: make build
       - name: Remove source-repo
         run: rm -rf source-repo/
       - name: Make site
         run: make site
-      - name: Env Test
+      - name: Make upload
         run: |
             cat .scripts/scripts.mk
             make upload
