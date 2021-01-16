@@ -38,7 +38,9 @@ jobs:
       - name: Make site
         run: make site
       - name: Env Test
-        run: make upload
+        run: |
+            cat .scripts/scripts.mk
+            make upload
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }} 
           SSH_USER: ${{ secrets.SSH_USER }}
