@@ -31,7 +31,7 @@ jobs:
         run: make distclean build-tools
       - name: Build site
         run: make build
-      - name: Make upload
+      - name: Upload site
         run: make upload
         env:
           SSH_HOST: ${{ secrets.SSH_HOST }} 
