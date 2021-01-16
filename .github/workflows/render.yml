@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: gh-pages
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
@@ -30,16 +28,13 @@ jobs:
       - name: Install Bundler
         run: gem install bundler
       - name: Setup 
-        run: |
-            make distclean 
-            bash -x .init-scripts/make-build-tools.sh
-            cat .scripts/scripts.mk
-      - name: Build
+        run: make distclean build-tools
+      - name: Build site
         run: make build
       - name: Remove source-repo
         run: rm -rf source-repo/
-      - name: Make site
-        run: make site
+        #      - name: Make site
+        #        run: make site
       - name: Make upload
         run: |
             cat .scripts/scripts.mk
