@@ -10,6 +10,7 @@ _layouts/
 _site/
 assets/
 branches/
+index.md
 node_modules/
 npm-debug.log
 package-lock.json
