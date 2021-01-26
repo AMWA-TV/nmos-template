@@ -1,4 +1,4 @@
-# \[Work In Progress\] AMWA NMOS Template Specification 
+# \[Work In Progress\] AMWA NMOS Template Specification
 
 [![Lint Status](https://github.com/AMWA-TV/nmos-template/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/nmos-template/actions?query=workflow%3ALint)
 [![Render Status](https://github.com/AMWA-TV/nmos-template/workflows/Render/badge.svg)](https://github.com/AMWA-TV/nmos-template/actions?query=workflow%3ARender)
