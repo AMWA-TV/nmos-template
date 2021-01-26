@@ -21,6 +21,8 @@ This repository holds the source for this Specification, part of the family of [
 - It contains examples of documentation, API, schemas, and examples.
 - These are rendered to HTML and uploaded to specs.amwa.tv
 
+[//]: # "INTRO-END"
+
 ## Getting started
 
 There is more information about the NMOS Specifications and their GitHub repos at <https://specs.amwa.tv/nmos>.
